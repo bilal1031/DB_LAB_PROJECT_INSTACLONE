@@ -57,8 +57,8 @@
 
             <div class="navigation__icons">
 
-                <a href="#" class="navigation__link">
-                    <i class="fa fa-heart-o"></i>
+                <a href="create_post.php?username=<?php echo $curr_us;?>" class="navigation__link">
+                    <i class="fa">+</i>
                 </a>
                 <a href="profile.php?curuser=<?php echo $curr_us?>&username=<?php echo $curr_us?>" class="navigation__link">
                     <i class="fa fa-user-o"></i>
@@ -198,6 +198,7 @@
             <div class="popUp__container">
                 <div class="popUp__buttons">
                     <a href="index.php" class="popUp__button">Log Out</a>
+                    <a href="delete_account.php?username=<?php echo $curr_us?>&confirmation=0" class="popUp__button">Delete Account</a>
                     <a href="#" class="popUp__button" id="cancelPopUp">Cancel</a>
                 </div>
             </div>

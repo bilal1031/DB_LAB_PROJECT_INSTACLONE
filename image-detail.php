@@ -36,9 +36,19 @@
             
 
                 
-                 $row2 = mysqli_fetch_array($result2);
-
-                 $profile_picture = $row2['profile_picture'];   
+                $row2 = mysqli_fetch_array($result2);
+                $profile_picture = $row2['profile_picture']; 
+               
+                $sql = "SELECT 1 AS verified FROM likes WHERE likername = '$curuser' AND post_id = $post_id;";
+                $result3 =  mysqli_query($conn,$sql);
+             
+                if (mysqli_num_rows($result) > 0) {
+                      $row3 = mysqli_fetch_array($result3);
+                      $isliked = isset($row3['verified']);
+                }else{
+                      $isliked = 0;
+                }
+               
                 
             ?> 
                 
@@ -114,6 +124,7 @@
                                 style="width:50px;height:50px"
                                 class="photo__avatar"
                        />
+
                     <a href ="profile.php?curuser=<?php echo $_GET['curuser']; ?>&username=<?php echo $username ?>" class="photo__username"><?php echo $username ?></a>
                     </div>
                     <div style ="height:300px; background-color:#ffffff; overflow:auto; " class= "photo__info">
@@ -146,7 +157,15 @@
                     <div style ="height:30px ">
                      <div class="photo__icons">
                             <span class="photo__icon">
-                            <a href = "" class='fa fa-heart-o heart fa-lg'></a>
+                            <?php 
+                                    if($isliked){
+                                             echo "<a href = 'likeq.php?curuser=$curuser&username=$curuser&post_id=$post_id&isliked=1' class='fa heart fa-lg heart-red fa-heart'></a>";
+                                       }else{
+                                             echo "<a href = 'likeq.php?curuser=$curuser&username=$curuser&post_id=$post_id&isliked=0' class='fa fa-heart-o heart fa-lg'></a>";
+                                   
+                                    }
+                           ?>
+                            
                             </span>
                             <span class="photo__icon">
                                 <i class="fa fa-comment-o fa-lg"></i>

@@ -55,7 +55,7 @@
         </head>
     <body>
         <nav class="navigation">
-            <a href="feed.php?username=<?php echo $curuser?>">
+            <a href="feed.php?username=<?php echo $username?>">
                 <img 
                     src="images/navLogo.png"
                     alt="logo"
